@@ -1,0 +1,21 @@
+{
+  "name": "hull-login-buttons",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --progress --colors --watch"
+  },
+  "author": "Jimmy Oliger",
+  "dependencies": {
+    "intl-messageformat": "^1.0.3",
+    "object-assign": "^2.0.0",
+    "react": "^0.12.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.9.1",
+    "jsx-loader": "^0.12.2",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.4.15"
+  }
+}
