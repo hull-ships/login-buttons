@@ -2,7 +2,7 @@ var assign = require('object-assign');
 var Emitter = require('events').EventEmitter;
 var IntlMessageFormat = require('intl-messageformat');
 
-var IS_MOBILE = require('isMobile')();
+var IS_MOBILE = require('./is-mobile')();
 
 var ACTIONS = [
   'login',
