@@ -7,7 +7,7 @@ var path = require('path');
 var open = require('open');
 var ngrok = require('ngrok');
 
-var SHIP_PORT = 8080;
+var SHIP_PORT = 8480;
 
 var PREVIEW_PORT = SHIP_PORT + 1;
 
