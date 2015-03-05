@@ -20,9 +20,9 @@ var STATUS = {
 
 var EVENT = 'CHANGE';
 
-function Engine(options) {
-  this._ship = options.ship || options.deployable;
-  this._platform = options.platform;
+function Engine(deployment) {
+  this._ship = deployment.ship || deployment.deployable;
+  this._platform = deployment.platform;
 
   this.resetState();
 
@@ -132,7 +132,7 @@ assign(Engine.prototype, Emitter.prototype, {
     var p = this.perform('login', provider);
 
     var location = this._ship.settings.redirect_url;
-    if (this._platform.type === 'platforms/shopify') {
+    if (this.isShopify()) {
       location = location || '/account';
     }
 
@@ -164,7 +164,7 @@ assign(Engine.prototype, Emitter.prototype, {
     var options = { provider: provider };
     if (IS_MOBILE) { options.strategy = 'redirect'; }
 
-    if (this._platform.type === 'platforms/shopify') {
+    if (this.isShopify()) {
       var proxy = document.location.origin + '/a/hull-callback';
       proxy += this._ship.settings.redirect_url ? '?redirect_url=' + this._ship.settings.redirect_url : '';
 
@@ -197,6 +197,10 @@ assign(Engine.prototype, Emitter.prototype, {
     if (m == null) { return; }
 
     return m.format(data);
+  },
+
+  isShopify: function() {
+    return this._platform.type === 'platforms/shopify';
   }
 });
 

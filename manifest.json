@@ -1,8 +1,14 @@
 {
   "name": "login-buttons",
+  "description": "Simple login buttons",
   "version": "0.0.1",
-  "index": "index.liquid",
+  "index": "index.html",
   "locales": ["en"],
+  "demoKeys": {
+    "orgUrl": "http://04ab8422.hullapp.dev",
+    "appId": "54f719695cc017945c000005",
+    "platformId": "54f7129a5cc0178a43000003"
+  },
   "settings": [
     {
       "name": "redirect_url",

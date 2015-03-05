@@ -1,5 +1,5 @@
 var React = require('react');
-var style = require('./style.css');
+var style = require('./style.scss');
 
 var ACTIONS = {
   login: 'isLogingIn',
