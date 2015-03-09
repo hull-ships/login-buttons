@@ -1,4 +1,4 @@
 import bootstrap from './bootstrap';
 
-Hull.onEmbed(document, boostrap);
+Hull.onEmbed(document, bootstrap);
 
