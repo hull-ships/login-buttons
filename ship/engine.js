@@ -21,8 +21,9 @@ var STATUS = {
 var EVENT = 'CHANGE';
 
 function Engine(deployment) {
-  this._ship = deployment.ship || deployment.deployable;
+  this._ship = deployment.ship;
   this._platform = deployment.platform;
+  this._settings = deployment.settings;
 
   this.resetState();
 
@@ -131,7 +132,7 @@ assign(Engine.prototype, Emitter.prototype, {
   login: function(provider) {
     var p = this.perform('login', provider);
 
-    var location = this._ship.settings.redirect_url;
+    var location = this._settings.redirect_url;
     if (this.isShopify()) {
       location = location || '/account';
     }
@@ -166,7 +167,7 @@ assign(Engine.prototype, Emitter.prototype, {
 
     if (this.isShopify()) {
       var proxy = document.location.origin + '/a/hull-callback';
-      proxy += this._ship.settings.redirect_url ? '?redirect_url=' + this._ship.settings.redirect_url : '';
+      proxy += this._settings.redirect_url ? '?redirect_url=' + this._settings.redirect_url : '';
 
       options.redirect_url = proxy;
     }

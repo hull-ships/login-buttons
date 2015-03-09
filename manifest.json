@@ -6,10 +6,9 @@
   "locales": ["en"],
   "demoKeys": {
     "orgUrl": "http://04ab8422.hullapp.dev",
-    "appId": "54f719695cc017945c000005",
-    "platformId": "54f7129a5cc0178a43000003"
+    "appId": "54f719695cc017945c000005"
   },
-  "settings": [
+  "deployment_settings": [
     {
       "name": "redirect_url",
       "title": "Redirect URL",
