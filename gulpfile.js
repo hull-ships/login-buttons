@@ -114,7 +114,7 @@ gulp.task('ship:server', ['ship:clean', 'ship:copy-watch'], function() {
   });
 });
 
-gulp.task('ship:deploy', ['ship:build'], function () {
+gulp.task('ship:deploy', function () {
   return gulp.src(SHIP_FOLDER + '/**/*').pipe(deploy({}));
 });
 
