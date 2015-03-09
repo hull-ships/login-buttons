@@ -115,11 +115,10 @@ gulp.task('ship:server', ['ship:clean', 'ship:copy-watch'], function() {
 });
 
 gulp.task('ship:github', function () {
-  var out = './' + SHIP_FOLDER + '/**/*';
-  return gulp.src(out).pipe(deploy({}));
+  return gulp.src(SHIP_FOLDER + '/**/*').pipe(deploy({}));
 });
 
-gulp.task('ship:deploy', ['ship:build', 'ship:github']);
+gulp.task('ship:deploy', ['ship:clean', 'ship:build', 'ship:github']);
 
 var PREVIEW_ENTRY = 'preview';
 
