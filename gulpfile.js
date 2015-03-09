@@ -6,6 +6,7 @@ var WebpackDevServer = require('webpack-dev-server');
 var path = require('path');
 var open = require('open');
 var ngrok = require('ngrok');
+var deploy = require('gulp-gh-pages');
 
 var SHIP_PORT = 8480;
 
@@ -112,6 +113,13 @@ gulp.task('ship:server', ['ship:clean', 'ship:copy-watch'], function() {
     });
   });
 });
+
+gulp.task('ship:github', function () {
+  var out = './' + SHIP_FOLDER + '/**/*';
+  return gulp.src(out).pipe(deploy({}));
+});
+
+gulp.task('ship:deploy', ['ship:build', 'ship:github']);
 
 var PREVIEW_ENTRY = 'preview';
 
