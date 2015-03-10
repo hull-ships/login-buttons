@@ -2,8 +2,6 @@ var assign = require('object-assign');
 var Emitter = require('events').EventEmitter;
 var IntlMessageFormat = require('intl-messageformat');
 
-var IS_MOBILE = require('./is-mobile')();
-
 var ACTIONS = [
   'login',
   'logout',
@@ -163,7 +161,6 @@ assign(Engine.prototype, Emitter.prototype, {
     this.emitChange();
 
     var options = { provider: provider };
-    if (IS_MOBILE) { options.strategy = 'redirect'; }
 
     if (this.isShopify()) {
       var proxy = document.location.origin + '/a/hull-callback';
