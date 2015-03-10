@@ -64,7 +64,8 @@ gulp.task('ship:clean', function(callback) {
 
 gulp.task('ship:webpack', function(callback) {
   webpack(SHIP_WEBPACK, function(error) {
-    if (error) { throw error; }
+    if (error) throw new gutil.PluginError('ship:webpack', error);
+
     callback();
   })
 });
@@ -113,7 +114,13 @@ gulp.task('ship:server', ['ship:clean', 'ship:copy-watch'], function() {
 
     gutil.log('[ship:server]', 'http://localhost:' + SHIP_PORT + '/webpack-dev-server/index.html');
 
-    ngrok.connect(SHIP_PORT, function (error, url) {
+    var options = { port: SHIP_PORT };
+    var e = process.env;
+    if (e.NGROK_AUTHTOKEN && e.NGROK_SUBDOMAIN) {
+      options.authtoken = e.NGROK_AUTHTOKEN;
+      options.subdomain = e.NGROK_SUBDOMAIN;
+    }
+    ngrok.connect(options, function (error, url) {
       if (error) throw new gutil.PluginError('ship:server', error);
 
       url = url.replace('https', 'http');
