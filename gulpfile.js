@@ -151,7 +151,7 @@ var PREVIEW_WEBPACK = {
   ]
 };
 
-gulp.task('preview:clean', function() {
+gulp.task('preview:clean', function(callback) {
   rimraf(PREVIEW_FOLDER, callback);
 });
 
