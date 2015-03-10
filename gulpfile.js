@@ -81,8 +81,8 @@ var SHIP_FILES = [
 
 function copyShipFiles(callback) {
   es.concat(
-    gulp.src(['manifest.json', 'ship/index.html'], { read: false }).pipe(gulp.dest(SHIP_FOLDER)),
-    gulp.src(['ship/locales/*.json'], { base: './ship', read: false }).pipe(gulp.dest(SHIP_FOLDER))
+    gulp.src(['manifest.json', 'ship/index.html']).pipe(gulp.dest(SHIP_FOLDER)),
+    gulp.src(['ship/locales/*.json'], { base: './ship' }).pipe(gulp.dest(SHIP_FOLDER))
   ).on('end', callback || gutil.noop);
 }
 
