@@ -1,22 +1,9 @@
 var assign = require('object-assign');
 var Emitter = require('events').EventEmitter;
 var IntlMessageFormat = require('intl-messageformat');
+var constants = require('./constants');
 
-var ACTIONS = [
-  'login',
-  'logout',
-  'linkIdentity',
-  'unlinkIdentity'
-];
-
-var STATUS = {
-  login: '_isLogingIn',
-  logout: '_isLogingOut',
-  linkIdentity: '_isLinking',
-  unlinkIdentity: '_isUnlinking'
-};
-
-var EVENT = 'CHANGE';
+const EVENT = 'CHANGE';
 
 function Engine(deployment) {
   this._ship = deployment.ship;
@@ -39,7 +26,7 @@ assign(Engine.prototype, Emitter.prototype, {
     if (this._actions) { return this._actions; }
 
     var instance = this;
-    this._actions = ACTIONS.reduce(function(m, a) {
+    this._actions = constants.ACTIONS.reduce(function(m, a) {
       m[a] = instance[a].bind(instance);
       return m;
     }, {});
@@ -48,18 +35,19 @@ assign(Engine.prototype, Emitter.prototype, {
   },
 
   getState: function() {
-    return {
+    var s = {
       user: this._user,
       identities: this._identities,
       providers: this.getProviders(),
       error: this._error,
-      isInitializing: this._isInitializing,
       isWorking: this._isLogingIn || this._isLogingOut || this._isLinking || this._isUnlinking,
       isLogingIn: this._isLogingIn,
       isLogingOut: this._isLogingOut,
       isLinking: this._isLinking,
       isUnlinking: this._isUnlinking
-    }
+    };
+
+    return s;
   },
 
   addChangeListener: function(listener) {
@@ -153,9 +141,9 @@ assign(Engine.prototype, Emitter.prototype, {
   },
 
   perform: function(method, provider) {
-    var s = STATUS[method];
+    var s = constants.STATUS[method];
 
-    this[s] = provider;
+    this['_' + s] = provider;
     this._error = null;
 
     this.emitChange();

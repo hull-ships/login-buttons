@@ -1,12 +1,6 @@
 var React = require('react');
 var style = require('./style.scss');
-
-var ACTIONS = {
-  login: 'isLogingIn',
-  logout: 'isLogingOut',
-  linkIdentity: 'isLinking',
-  unlinkIdentity: 'isUnlinking'
-};
+var constants = require('./constants');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -96,7 +90,7 @@ module.exports = React.createClass({
     var buttonClasses = 'hull-btn hull-btn-' + provider.name;
     var iconClasses = 'hull-icon hull-icon-' + provider.name;
 
-    var m = this.state[ACTIONS[actionName]] === provider.name ? ACTIONS[actionName] : actionName;
+    var m = this.state[constants.STATUS[actionName]] === provider.name ? constants.STATUS[actionName] : actionName;
     var wording = this.translate(m, { provider: provider.name });
 
     return (
