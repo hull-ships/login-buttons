@@ -7,6 +7,9 @@ var path = require('path');
 var open = require('open');
 var ngrok = require('ngrok');
 var deploy = require('gulp-gh-pages');
+var es = require('event-stream');
+var rimraf = require('rimraf');
+var runSequence = require('run-sequence');
 
 var SHIP_PORT = 8480;
 
@@ -55,16 +58,19 @@ var SHIP_WEBPACK = {
   ]
 };
 
-gulp.task('ship:build', ['ship:clean', 'ship:copy'], function() {
-  return webpack(SHIP_WEBPACK, function(error) {
+gulp.task('ship:clean', function(callback) {
+  rimraf(SHIP_FOLDER, callback);
+});
+
+gulp.task('ship:webpack', function(callback) {
+  webpack(SHIP_WEBPACK, function(error) {
     if (error) { throw error; }
+    callback();
   })
 });
 
-gulp.task('ship:clean', function() {
-  del([
-    SHIP_FOLDER
-  ]);
+gulp.task('ship:build', function(callback) {
+  runSequence('ship:clean', 'ship:webpack', 'ship:copy', callback);
 });
 
 var SHIP_FILES = [
@@ -73,15 +79,11 @@ var SHIP_FILES = [
   'ship/locales/*.json'
 ];
 
-function copyShipFiles() {
-  gulp.src([
-    'manifest.json',
-    'ship/index.html'
-  ]).pipe(gulp.dest(SHIP_FOLDER));
-
-  gulp.src([
-    'ship/locales/*.json'
-  ], { base: './ship' }).pipe(gulp.dest(SHIP_FOLDER));
+function copyShipFiles(callback) {
+  es.concat(
+    gulp.src(['manifest.json', 'ship/index.html'], { read: false }).pipe(gulp.dest(SHIP_FOLDER)),
+    gulp.src(['ship/locales/*.json'], { base: './ship', read: false }).pipe(gulp.dest(SHIP_FOLDER))
+  ).on('end', callback || gutil.noop);
 }
 
 gulp.task('ship:copy', copyShipFiles);
@@ -90,6 +92,14 @@ gulp.task('ship:copy-watch', function(){
   copyShipFiles()
 
   gulp.watch(SHIP_FILES, copyShipFiles);
+});
+
+gulp.task('ship:github', function () {
+  return gulp.src(SHIP_FOLDER + '/**/*').pipe(deploy({}));
+});
+
+gulp.task('ship:deploy', function(callback) {
+  runSequence('ship:build', 'ship:github', callback);
 });
 
 gulp.task('ship:server', ['ship:clean', 'ship:copy-watch'], function() {
@@ -112,10 +122,6 @@ gulp.task('ship:server', ['ship:clean', 'ship:copy-watch'], function() {
       open(url, 'chrome');
     });
   });
-});
-
-gulp.task('ship:deploy', function () {
-  return gulp.src(SHIP_FOLDER + '/**/*').pipe(deploy({}));
 });
 
 var PREVIEW_ENTRY = 'preview';
@@ -146,15 +152,13 @@ var PREVIEW_WEBPACK = {
 };
 
 gulp.task('preview:clean', function() {
-  del([
-    PREVIEW_FOLDER
-  ]);
+  rimraf(PREVIEW_FOLDER, callback);
 });
 
 var PREVIEW_FILES = ['preview/index.html']
 
 function copyPreviewFiles() {
-  gulp.src(PREVIEW_FILES).pipe(gulp.dest(PREVIEW_FOLDER));
+  return gulp.src(PREVIEW_FILES).pipe(gulp.dest(PREVIEW_FOLDER));
 }
 
 gulp.task('preview:copy-watch', function(){
