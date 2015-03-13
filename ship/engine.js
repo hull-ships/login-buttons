@@ -13,7 +13,7 @@ function Engine(deployment) {
   this.resetState();
 
   this.resetUser();
-  Hull.on('hull.auth', function() {
+  Hull.on('hull.user.*', function() {
     this.resetUser()
     this.emitChange();
   }.bind(this));
