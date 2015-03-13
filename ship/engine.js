@@ -161,12 +161,12 @@ assign(Engine.prototype, Emitter.prototype, {
     promise.then(function() {
       this.resetUser();
 
-      this[s] = false;
+      this['_' + s] = false;
       this._error = null;
 
       this.emitChange();
     }.bind(this), function(error) {
-      this[s] = false;
+      this['_' + s] = false;
 
       error.provider = provider;
       this._error = error;
