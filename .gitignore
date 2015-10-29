@@ -1,7 +1,8 @@
-__preview__
-__ship__
 node_modules
 bower_components
 stats.json
 .DS_Store
-.env
+dist
+build
+npm-debug.log
+.env.sh
