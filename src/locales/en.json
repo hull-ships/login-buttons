@@ -39,5 +39,11 @@
   "unlinking help text for Soundcloud": "",
   "unlinking help text for Tumblr": "",
   "unlinking help text for Twitter": "",
-  "unlinking help text for Vkontakte": ""
+  "unlinking help text for Vkontakte": "",
+
+  "social-login error auth_failed" : "Authentication failed",
+  "social-login error unknown": "Authentication failed",
+  "social-login error email_taken": "Email has already been taken",
+  "social-login error identity_taken": "Identity has already been taken",
+  "social-login error window_closed": "Window closed"
 }
