@@ -1,13 +1,27 @@
 {
-  "name": "login-buttons",
-  "description": "Simple login buttons",
+  "name": "Login Buttons",
+  "description": "Social login buttons",
+  "picture": "picture.png",
+  "index": "ship.js",
   "version": "0.0.1",
-  "index": "index.html",
-  "locales": ["en"],
-  "demoKeys": {
-    "orgUrl": "http://04ab8422.hullapp.dev",
-    "appId": "54f719695cc017945c000005"
-  },
+  "settings": [
+    {
+      "name":"button_border_radius",
+      "title": "Button border radius",
+      "type": "number",
+      "format": "range",
+      "default": 3,
+      "minimum": 0,
+      "maximun": 100
+    },
+    {
+      "name": "custom_styles",
+      "title": "Custom CSS",
+      "description": "Custom CSS to fine-tune Styles.",
+      "type": "string",
+      "format":"textarea"
+    }
+  ],
   "deployment_settings": [
     {
       "name": "redirect_url",
@@ -15,6 +29,8 @@
       "description": "Where to redirect when login has succeeded.",
       "type": "string"
     }
+  ],
+  "locales": [
+    "en"
   ]
 }
-

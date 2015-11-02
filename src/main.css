@@ -1,0 +1,39 @@
+@import "styles/settings";
+
+.ship, .content{
+  all:initial;
+  font-family: var(--font-family);
+  font-size: var(--font-size-normal);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  line-height:var(--line-height-normal);
+  box-sizing: border-box;
+}
+
+.ship{
+  margin-bottom: 200px;
+  user-select: none;
+}
+
+.content{
+  display:block;
+}
+
+.spinner{
+  left: 50%;
+  top: 0%;
+  position: absolute;
+  z-index: 10;
+  transform: translate3d(-50%,5px, 0);
+  padding: 0px;
+  border-radius: 1000px;
+  i{
+    display: block;
+    width: 64px;
+    height: 64px;
+  }
+  svg{
+    display: block;
+  }
+}
+
