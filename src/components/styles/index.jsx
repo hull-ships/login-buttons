@@ -28,7 +28,6 @@ const Styles = React.createClass({
       background_color: background,
       text_color: text,
       button_border_radius: buttonBorderRadius,
-      overlay_border_radius: overlayBorderRadius,
     } = this.props.settings;
 
     const buttonTextColor = color(primary).darken(0.5).dark() ? 'white' : '#444';
@@ -72,12 +71,7 @@ const Styles = React.createClass({
       },
       borderRadius: {
         normal: {
-          borderRadius: overlayBorderRadius,
-        },
-      },
-      smallBorderRadius: {
-        normal: {
-          borderRadius: (buttonBorderRadius),
+          borderRadius: buttonBorderRadius,
         },
       },
       mainBackground: {

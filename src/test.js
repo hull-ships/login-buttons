@@ -12,6 +12,11 @@ function onReady(hull, user, platform, organization) {
 
   I18n.setTranslations({ en });
 
+  deployment.ship.settings = {
+    ...deployment.ship.settings,
+    button_border_radius: 10,
+  };
+
   const engine = start(deployment, hull);
   ReactDOM.render(<Main engine={engine} actions={engine.getActions()} />, element);
 }
