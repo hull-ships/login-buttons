@@ -26,7 +26,7 @@ const Button = React.createClass({
       [this.props.kind]: !!this.props.kind,
     });
     return (
-      <button {...this.props} styleName={cn}>{this.props.icon}{this.props.children}</button>
+      <div {...this.props} styleName={cn}>{this.props.icon}{this.props.children}</div>
     );
   },
 });
