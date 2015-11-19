@@ -24,7 +24,6 @@ export default React.createClass({
 
   render() {
     const translation = translate(this.props.message, this.props.variables);
-    console.log('LA TRAD', translation);
 
     if (!translation) {
       return null;
