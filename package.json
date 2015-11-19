@@ -40,7 +40,7 @@
     "react-input-placeholder": "^1.2.0",
     "tcomb-form": "^0.7.4",
     "tcomb-json-schema": "hull/tcomb-json-schema#master",
-    "hull-login": "hull-ships/hull-login#98cfb25e4eaf0cd3003f4f5991ee34663e64a092"
+    "hull-login": "hull-ships/hull-login#3dd0272cb69d39df33c2b13560e1d16c9aa5b0e6"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
