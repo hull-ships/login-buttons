@@ -45,5 +45,6 @@
   "social-login error unknown": "Authentication failed",
   "social-login error email_taken": "Email has already been taken",
   "social-login error identity_taken": "Identity has already been taken",
+  "social-login error disabled_customer": "An email has been sent, please click the link included to verify your email address.",
   "social-login error window_closed": "Window closed"
 }
