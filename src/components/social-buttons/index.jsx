@@ -46,7 +46,6 @@ const SocialButtons = React.createClass({
     let actionName;
     let status;
     let button;
-    console.warn('renderButton: ', provider)
     if (!this.props.user) {
       actionName = 'logIn';
       status = 'isLoggingIn';
@@ -67,7 +66,6 @@ const SocialButtons = React.createClass({
     const providerName = capitalize(provider.name);
     const wording = translate(m, { provider: providerName });
     const handler = this.props[actionName].bind(null, provider.name);
-    const isLast = this.props.providers.length === index + 1;
 
     return (
       <span key={provider.name}>
