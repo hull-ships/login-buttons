@@ -42,7 +42,7 @@ const SocialButtons = React.createClass({
     }
   },
 
-  renderButton(provider, index) {
+  renderButton(provider) {
     let actionName;
     let status;
     let button;
