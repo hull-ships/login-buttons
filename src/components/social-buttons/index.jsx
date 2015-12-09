@@ -2,7 +2,6 @@ import React from 'react';
 import { translate } from '../../lib/i18n';
 import Button from '../button';
 import Icon from '../icon';
-import Help from '../help';
 import ErrrorMessage from '../error';
 import TranslatedMessage from '../translated-message';
 import { hasTranslation } from '../../lib/i18n';
@@ -47,22 +46,19 @@ const SocialButtons = React.createClass({
     let actionName;
     let status;
     let button;
-    let help;
+    console.warn('renderButton: ', provider)
     if (!this.props.user) {
       actionName = 'logIn';
       status = 'isLoggingIn';
       button = ['sign-up social button text', 'sign-up social button text when attempting sign-up'];
-      help = 'sign-up help text';
     } else if (provider.isLinked && provider.isUnlinkable) {
       actionName = 'unlinkIdentity';
       status = 'isUnlinking';
       button = ['unlinking social button text', 'unlinking social button text when attempting sign-up'];
-      help = 'unlinking help text';
     } else if (!provider.isLinked) {
       actionName = 'linkIdentity';
       status = 'isLinking';
       button = ['linking social button text', 'linking social button text when attempting sign-up'];
-      help = 'linking help text';
     } else {
       return null;
     }
@@ -70,10 +66,8 @@ const SocialButtons = React.createClass({
     const m = this.props[status] === provider.name ? button[1] : button[0];
     const providerName = capitalize(provider.name);
     const wording = translate(m, { provider: providerName });
-    const helpText = <TranslatedMessage message={help + ' for ' + providerName} />;
     const handler = this.props[actionName].bind(null, provider.name);
     const isLast = this.props.providers.length === index + 1;
-    const s = isLast ? {} : { marginBottom: 10 };
 
     return (
       <span key={provider.name}>
@@ -81,7 +75,6 @@ const SocialButtons = React.createClass({
           <Icon name={provider.name} colorize/>
           {wording}
         </Button>
-        <Help style={s}>{helpText}</Help>
       </span>
     );
   },
