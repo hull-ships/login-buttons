@@ -24,7 +24,9 @@ const SocialButtons = React.createClass({
   },
 
   getErrorMessage() {
-    const error = this.props.errors.signUp || this.props.errors.logIn;
+    const { signUp, logIn, linkIdentity, unlinkIdentity } = this.props.errors;
+    const error = signUp || logIn || linkIdentity || unlinkIdentity;
+
     if (error && error.provider && error.provider !== 'classic') {
       const { reason, message } = error;
       let errorMessage;
