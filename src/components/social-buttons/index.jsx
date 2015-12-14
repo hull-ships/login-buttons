@@ -49,15 +49,15 @@ const SocialButtons = React.createClass({
     if (!this.props.user) {
       actionName = 'logIn';
       status = 'isLoggingIn';
-      button = ['sign-up social button text', 'sign-up social button text when attempting sign-up'];
+      button = ['log-in social button text', 'logging-in social button text'];
     } else if (provider.isLinked && provider.isUnlinkable) {
       actionName = 'unlinkIdentity';
       status = 'isUnlinking';
-      button = ['unlinking social button text', 'unlinking social button text when attempting sign-up'];
+      button = ['unlink social button text', 'unlinking social button text'];
     } else if (!provider.isLinked) {
       actionName = 'linkIdentity';
       status = 'isLinking';
-      button = ['linking social button text', 'linking social button text when attempting sign-up'];
+      button = ['link social button text', 'linking social button text'];
     } else {
       return null;
     }

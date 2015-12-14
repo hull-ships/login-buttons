@@ -1,12 +1,12 @@
 {
-  "sign-up social button text": "Log in with {provider}",
-  "sign-up social button text when attempting sign-up": "Logging in with {provider}",
+  "log-in social button text": "Log in with {provider}",
+  "logging-in social button text": "Logging in with {provider}",
 
-  "linking social button text": "Link your {provider} account",
-  "linking social button text when attempting sign-up": "Linking your {provider} account",
+  "link social button text": "Link your {provider} account",
+  "linking social button text": "Linking your {provider} account",
 
-  "unlinking social button text": "Unlink your {provider} account",
-  "unlinking social button text when attempting sign-up": "Unlinking your {provider} account",
+  "unlink social button text": "Unlink your {provider} account",
+  "unlinking social button text": "Unlinking your {provider} account",
 
   "social-login error auth_failed" : "Authentication failed",
   "social-login error unknown": "Authentication failed",
