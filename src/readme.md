@@ -19,7 +19,7 @@ From the Ship's customize screen, open the console and point at the item you're 
 
 For instance, let's say you want to remove the icons, put them all in a row so they look like this:
 
-![login buttons customized](//images.contentful.com/6dwooevx4aly/OhL5O6zdIqCaMK6M6SoGy/aa510f71288fa5c74ea3302fac6f0476/Screen_Shot_2016-01-05_at_11.29.35_AM.png)
+![login buttons customized](http://images.contentful.com/6dwooevx4aly/OhL5O6zdIqCaMK6M6SoGy/aa510f71288fa5c74ea3302fac6f0476/Screen_Shot_2016-01-05_at_11.29.35_AM.png)
 
 Here's a video explaining how to do it, showing you how to find the right CSS classes to customize.
 
