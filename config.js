@@ -111,6 +111,7 @@ var files = {
   'manifest.json': outputFolder,
   'src/*.ico': outputFolder,
   'src/*.jpg': outputFolder,
+  'src/*.md': outputFolder,
   'src/*.png': outputFolder,
   'src/*.html': outputFolder,
   'CNAME': outputFolder,

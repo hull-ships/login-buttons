@@ -3,6 +3,7 @@
   "description": "Social login buttons",
   "picture": "picture.png",
   "index": "ship.js",
+  "readme" : "readme.md",
   "version": "0.0.1",
   "settings": [
     {
