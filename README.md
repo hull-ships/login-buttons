@@ -6,7 +6,7 @@ Login buttons you can embed in your site.
 ## Manifest URL
 
 ```
-https://hull-ships.github.io/hull-login-buttons/manifest.json
+https://ships.hull.io/login-buttons/manifest.json
 ```
 
 ## Developing
@@ -14,8 +14,8 @@ https://hull-ships.github.io/hull-login-buttons/manifest.json
 Ensure that [Node.js](http://nodejs.org) and [gulp.js](http://gulpjs.com) are installed.
 
 ```
-git clone git@github.com:hull-ships/hull-login-buttons.git
-cd hull-login-buttons
+git clone git@github.com:hull-ships/login-buttons.git
+cd login-buttons
 npm install
 gulp
 ```
