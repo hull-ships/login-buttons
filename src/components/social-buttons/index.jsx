@@ -87,14 +87,18 @@ const SocialButtons = React.createClass({
   },
 
   render() {
-    const { providers } = this.props;
-    const buttons = providers && providers.map(this.renderButton, this);
-    return (
-      <div styleName="submit">
-        {this.renderErrors()}
-        {buttons}
-      </div>
-    );
+    if (this.props.user) {
+      return <div />;
+    } else {
+      const { providers } = this.props;
+      const buttons = providers && providers.map(this.renderButton, this);
+      return (
+        <div styleName="submit">
+          {this.renderErrors()}
+          {buttons}
+        </div>
+      );
+    }
   },
 });
 
