@@ -12,6 +12,7 @@ export default React.createClass({
     tag: React.PropTypes.string,
     allowHTML: React.PropTypes.bool,
     className: React.PropTypes.string,
+    fallback: React.PropTypes.string,
   },
 
   getDefaultProps: function() {
@@ -23,7 +24,7 @@ export default React.createClass({
   },
 
   render() {
-    const translation = translate(this.props.message, this.props.variables);
+    const translation = translate(this.props.message, this.props.variables, this.props.fallback);
 
     if (!translation) {
       return null;

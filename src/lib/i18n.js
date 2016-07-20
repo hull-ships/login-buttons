@@ -29,7 +29,7 @@ function setLocale(locale) {
   compileMessages();
 }
 
-function translate(message, data) {
+function translate(message, data, fallback) {
   if (!_initialized) {
     console.warn('[i18n] translations not initialized yet - translating "' + message + '"'); // eslint-disable-line
     return message;
@@ -41,7 +41,8 @@ function translate(message, data) {
     console.warn('[i18n] "' + message + '". is missing in "' + _locale + '".'); // eslint-disable-line
 
     const mf = new MessageFormat(_locale);
-    m = _messages[message] = mf.compile(message);
+    const msg = typeof(fallback) === 'string' ? fallback : message;
+    m = _messages[message] = mf.compile(msg);
   }
 
   try {
