@@ -50,13 +50,19 @@ const HullLogin = React.createClass({
     return !this.state.shipSettings.custom_styles ? null : <style dangerouslySetInnerHTML={{__html: this.state.shipSettings.custom_styles}}></style>;
   },
 
+  renderFooter() {
+    if (!this.state.user) {
+      return <TranslatedMessage message="footer" tag="p" fallback="" />;
+    }
+  },
+
   render() {
     return (
       <div styleName="ship">
         <Styles scope={this.props.styles.ship} styles={this.props.styles} settings={this.state.shipSettings} />
         {this.renderUserStyles()}
         <SocialButtons {...this.state} {...this.props.actions} />
-        <TranslatedMessage message="footer" tag="p" fallback="" />
+        {this.renderFooter()}
       </div>
     );
   },
